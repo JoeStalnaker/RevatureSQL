@@ -1,0 +1,34 @@
+/*
+Enter your query here.
+*/
+SELECT DISTINCT city
+FROM (
+    SELECT city
+    FROM Station
+    WHERE city REGEXP "^[^AEIOU]"
+    AND city REGEXP "[^aeiou]$" ) A
+FULL OUTER JOIN (
+    SELECT DISTINCT CITY FROM STATION
+    WHERE CITY REGEXP '^[^aeiou]|[^aeiou]$' ) B
+WHERE A.city IS NULL
+OR B.city IS NULL;
+
+SELECT DISTINCT A.city FROM (
+    SELECT city
+    FROM Station
+    WHERE city REGEXP "^[^AEIOU]"
+    AND city REGEXP "[^aeiou]$" ) A
+JOIN (
+    SELECT DISTINCT CITY FROM STATION
+    WHERE CITY REGEXP '^[^aeiou]|[^aeiou]$' ) B
+ON A.city <> B.city;
+
+SELECT city
+FROM
+TableA A
+FULL OUTER JOIN
+TableB B
+WHERE A.city IS NULL
+OR B.city IS NULL;
+
+

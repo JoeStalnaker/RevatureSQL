@@ -1,0 +1,4 @@
+SELECT city
+FROM Station
+WHERE city REGEXP "^[^AEIOU]"
+AND city REGEXP "[^aeiou]$";
